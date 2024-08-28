@@ -1,0 +1,18 @@
+{
+    "name": "SoundEffectsPlayer.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:a2896a00524162746aa623a963d7e976"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
