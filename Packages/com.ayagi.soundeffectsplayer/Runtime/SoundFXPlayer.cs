@@ -5,9 +5,14 @@ namespace SoundEffectsPlayer
 {
     public static class SoundFXPlayer
     {
-        public static void Play(ResourcesAudioFile audioFile)
+        public static bool PitchTimeScaling
         {
-            AudioSourcePlayer.Play(audioFile);
+            get => AudioSourcePlayer.PitchTimeScaling;
+            set => AudioSourcePlayer.SetPitchTimeScaling(value);
+        }
+        public static void Play(ResourcesAudioFile audioFile, float volume = 1)
+        {
+            AudioSourcePlayer.Play(audioFile, volume);
         }
         public static void SetAudioMixerGroup(AudioMixerGroup audioMixerGroup)
         {
