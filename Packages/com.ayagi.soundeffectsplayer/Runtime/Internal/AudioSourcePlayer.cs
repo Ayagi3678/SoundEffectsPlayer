@@ -13,27 +13,29 @@ namespace SoundEffectsPlayer.Internal
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         static void Init()
         {
+            if(_instance != null) return;
             _instance = new GameObject(nameof(AudioSourcePlayer)).AddComponent<AudioSourcePlayer>();
-            _instance._defaultAudioSource = _instance.gameObject.AddComponent<AudioSource>();
+            _defaultAudioSource = _instance.gameObject.AddComponent<AudioSource>();
+            DontDestroyOnLoad(_instance.gameObject);
         }
         static AudioSourcePlayer _instance;
-        private AudioSource _defaultAudioSource;
+        private static AudioSource _defaultAudioSource;
         private readonly Dictionary<ResourcesAudioFile, AudioClip> _cache = new Dictionary<ResourcesAudioFile, AudioClip>();
         private bool _pitchTimeScaling;
         public static void Play(ResourcesAudioFile audioFile,float volume)
         {
             if(_instance._cache.ContainsKey(audioFile))
             {
-                _instance._defaultAudioSource.PlayOneShot(_instance._cache[audioFile],volume);
+                _defaultAudioSource.PlayOneShot(_instance._cache[audioFile],volume);
                 return;
             }
             var resource= Resources.Load<AudioClip>($"Sounds/{audioFile}");
             _instance._cache.Add(audioFile, resource);
-            _instance._defaultAudioSource.PlayOneShot(resource,volume);
+            _defaultAudioSource.PlayOneShot(resource,volume);
         }
         public static void SetAudioMixerGroup(AudioMixerGroup audioMixerGroup)
         {
-            _instance._defaultAudioSource.outputAudioMixerGroup = audioMixerGroup;
+            _defaultAudioSource.outputAudioMixerGroup = audioMixerGroup;
         }
         public static void SetPitchTimeScaling(bool pitchTimeScaling)
         {
