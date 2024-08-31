@@ -9,6 +9,15 @@ namespace Editor
     {
         private const string SoundFolderPath = "Assets/Resources/Sounds";
         
+        [InitializeOnLoadMethod]
+        static void Initialize()
+        {
+            if (!Directory.Exists(SoundFolderPath))
+            {
+                Directory.CreateDirectory(SoundFolderPath);
+            }
+            GenerateSoundEnum();
+        }
         // アセット変更時に呼び出されるメソッド
         static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets,
             string[] movedFromAssetPaths)
