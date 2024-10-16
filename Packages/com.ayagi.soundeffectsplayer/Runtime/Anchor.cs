@@ -1,4 +1,6 @@
-public class Anchor
+namespace SoundEffectsPlayer
 {
-        
+    public class Anchor
+    {
+    }
 }
