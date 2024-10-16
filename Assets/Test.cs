@@ -1,4 +1,5 @@
 using System;
+using Editor;
 using SoundEffectsPlayer;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -13,7 +14,6 @@ namespace DefaultNamespace
         {
             SoundFXPlayer.SetAudioMixerGroup(soundFXAudioMixerGroup);
         }
-
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
