@@ -14,6 +14,10 @@ namespace DefaultNamespace
         {
             SoundFXPlayer.SetAudioMixerGroup(soundFXAudioMixerGroup);
         }
+        private void TestMethod(ResourcesAudioFile audioFile)
+        {
+            SoundFXPlayer.Play(audioFile);
+        }
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
